@@ -34,6 +34,7 @@ def get_id(page):
 def main():
     with open('data/weibo_id.csv', 'w', encoding='utf-8', newline='')as f:
         writer = csv.writer(f)
+        writer.writerow(['id'])
     for page in range(1, 107):
         print('==============={}================'.format(page))
         get_id(page)

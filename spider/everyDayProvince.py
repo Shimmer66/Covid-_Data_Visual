@@ -51,29 +51,30 @@ def get_content(province):
     r = requests.get(url=url, headers=headers).text
     return r
 
-def get_data(r):
+def get_data(r,writer):
     dict = json.loads(r)
     data_list = dict['data']
-    with open('data/everyDayProvince.csv', 'a', encoding='utf-8', newline='')as f:
-        writer = csv.writer(f)
-        for data in data_list:
-            data['year']=str(data['year'])+'.'+data['date']
-            date = data['year']
-            # print(date)
-            province = data['province']
-            confirm = data['confirm']
-            dead = data['dead']
-            heal = data['heal']
-            writer.writerow([date, province, confirm, dead, heal])
-            # print(1)
+    for data in data_list:
+        data['year']=str(data['year'])+'.'+data['date']
+        date = data['year']
+        # print(date)
+        province = data['province']
+        confirm = data['confirm']
+        dead = data['dead']
+        heal = data['heal']
+        writer.writerow([date, province, confirm, dead, heal])
+        # print(1)
 
 
 def main():
     province_list = get_province()
-    for province in province_list:
-        r = get_content(province)
-        print(r)
-        # get_data(r)
+    with open('data/everyDayProvince.csv', 'a', encoding='utf-8', newline='')as f:
+        writer = csv.writer(f)
+        writer.writerow(['date', 'province', 'confirm', 'dead', 'heal'])
+        for province in province_list:
+            r = get_content(province)
+            # print(r)
+            get_data(r,writer)
 
 
 if __name__ == '__main__':

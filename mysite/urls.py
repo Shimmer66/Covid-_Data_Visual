@@ -4,8 +4,9 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('weibo',views.weibo,name='weibo'),
-    path('migration',views.migration,name='migration'),
+    path('other', views.other, name='other'),
+    path('weibo', views.weibo, name='weibo'),
+    path('migration', views.migration, name='migration'),
     # path('chinamap', views.chinamap, name='chinamap'),
     path('countrymap', views.countrymap, name='countrymap'),
     path('台湾map', views.台湾map, name='台湾map'),

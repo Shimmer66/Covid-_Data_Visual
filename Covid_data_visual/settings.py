@@ -11,11 +11,27 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
-
+import pymysql
+pymysql.install_as_MySQLdb()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+DATABASES_NAME = 'Covid'  # 数据库名称
+DATABASES_USER = 'root'  # 数据库用户名，按实际情况填写你的
+DATABASES_PASSWORD = 'why..219'  # 数据库密码，按实际情况填写你的
 
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',  # 修改数据库为MySQL，并进行配置
+        'NAME': DATABASES_NAME,  # 数据库名称
+        'USER': DATABASES_USER,  # 你的用户名，
+        'PASSWORD': DATABASES_PASSWORD,  # 你的密码
+        'HOST': '127.0.0.1',
+        'PORT': 3306,
+        'OPTIONS': {'charset': 'utf8mb4', }
+    }
+}
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -74,13 +90,6 @@ WSGI_APPLICATION = 'Covid_data_visual.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 
 # Password validation

@@ -4,6 +4,8 @@ from django.shortcuts import render
 # Create your views here.
 def index(request):
     return render(request, "all.html")
+def other(request):
+    return render(request, "other.html")
 def weibo(request):
     return render(request,'weibo.html')
 def migration(request):

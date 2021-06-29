@@ -36,6 +36,7 @@ def get_data(r):
 def main():
     with open('data/weibo_content.csv', 'w', encoding='utf-8', newline='')as f:
         writer = csv.writer(f)
+        writer.writerow(['content'])
     id_list = get_id()
     for id in id_list:
         print('===================={}=================='.format(id))

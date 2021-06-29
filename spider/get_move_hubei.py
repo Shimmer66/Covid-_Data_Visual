@@ -62,8 +62,10 @@ def move_out(date):
 def main():
     with open('data/in_hubei.csv', 'w', encoding='utf-8', newline='')as f:
         writer = csv.writer(f)
+        writer.writerow(['date', 'province', 'value'])
     with open('data/out_hubei.csv', 'w', encoding='utf-8', newline='')as f:
         writer = csv.writer(f)
+        writer.writerow(['date', 'province', 'value'])
     date_list = get_date()
     for date in date_list:
         print('==================={}======================'.format(date))
