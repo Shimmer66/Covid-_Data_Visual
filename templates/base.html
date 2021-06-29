@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/html">
+<head>
+    {% block head %} {% endblock %}
+    <!-- 必须的 meta 标签 -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>疫情可视化分析</title>
+    <link rel="shortcut icon " type="images/x-icon" href="/static/icon/book.png">
+    <!-- Bootstrap Core CSS   bootstrap@5.0.0-->
+    <link href="/static/bootstrap-5.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/bootstrap-5.0.0/css/custom.css" rel="stylesheet">
+</head>
+
+<br>
+<!-- Navigation -->
+<nav class="navbar fixed-top  navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+{#                <li class="nav-item dropdown">#}
+{#                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"#}
+{#                       aria-expanded="false">疫情地图</a>#}
+{#                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">#}
+                        <li><a class="nav-link active" aria-current="page" href="{% url 'chinamap' %}"> 中国疫情</a></li>
+{#                        <li><a class="dropdown-item" href="{% url 'countrymap' %}">世界疫情</a></li>#}
+                        {#                        <li><a class="dropdown-item" href="#">Something else here</a></li>#}
+                        {#                        <li>#}
+                        {#                            <hr class="dropdown-divider">#}
+                        {#                        </li>#}
+                        {#                        <li><a class="dropdown-item" href="#">Separated link</a></li>#}
+{#                    </ul>#}
+{#                </li>#}
+
+
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'weibo' %}">微博数据展示</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'migration' %}">疫情人口流动数据</a>
+                </li>
+
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div style="margin-top: 30px;"></div>
+<!--页面专属内容-->
+
+{% block right-panel-content %} {% endblock %}
+
+
+<!-- Footer -->
+<br>
+<br>
+<footer class="navbar fixed-bottom ">
+    <div class="container">
+
+        <p class="text-muted small mb-0 m-auto">Copyright &copy; Taobao data visualization 2021</p>
+    </div>
+</footer>
+
+
+<!-- jQuery 和 Bootstrap 集成包（集成了 Popper） -->
+<script src="/static/bootstrap-5.0.0/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

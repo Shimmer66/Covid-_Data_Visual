@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: snapshot-pyppeteer
+Version: 0.0.2
+Summary: Render pyecharts as image via pyppeteer
+Home-page: https://github.com/pyecharts/snapshot-pyppeteer
+Author: sunhailin-Leo
+Author-email: 379978424@qq.com
+License: MIT
+Keywords: snapshot-pyppeteer,snapshot,pyppeteer
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Topic :: Software Development :: Libraries
+Requires-Dist: pyppeteer
+Requires-Dist: nest-asyncio
+
+UNKNOWN
+
+
