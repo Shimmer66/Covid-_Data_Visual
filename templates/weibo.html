@@ -1,8 +1,9 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
+{% block right-panel-content %}
+
 <head>
-    <meta charset="UTF-8">
-    <title>Awesome-pyecharts</title>
+
+
             <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
         <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts-wordcloud.min.js"></script>
         <script type="text/javascript" src="https://assets.pyecharts.org/assets/jquery.min.js"></script>
@@ -127565,4 +127566,4 @@ function downloadCfg () {
 }
     </script>
 </body>
-</html>
+{% endblock %}

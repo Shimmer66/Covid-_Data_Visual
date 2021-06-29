@@ -4,7 +4,6 @@ from urllib.parse import quote
 
 import requests
 
-
 def get_province():
     url = 'https://api.inews.qq.com/newsqa/v1/query/inner/publish/modules/list?modules=chinaDayList,chinaDayAddList,nowConfirmStatis,provinceCompare'
     headers = {
@@ -72,9 +71,9 @@ def get_data(r):
 def main():
     province_list = get_province()
     for province in province_list:
-        print('============================={}============================='.format(province))
         r = get_content(province)
-        get_data(r)
+        print(r)
+        # get_data(r)
 
 
 if __name__ == '__main__':

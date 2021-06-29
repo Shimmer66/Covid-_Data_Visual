@@ -3,13 +3,12 @@ from django.shortcuts import render
 
 # Create your views here.
 def index(request):
-    return render(request, "index.html")
+    return render(request, "all.html")
 def weibo(request):
     return render(request,'weibo.html')
 def migration(request):
     return render(request,'migration.html')
-def chinamap(request):
-    return render(request, 'china.html')
+
 def countrymap(request):
     return render(request, 'china_all.html')
 
