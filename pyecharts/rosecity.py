@@ -25,7 +25,7 @@ def rose()->Pie:
                  , radius=['25%', '95%']  # 饼图的半径，第一项是内半径，第二项是外半径，百分比表示相对位置
                  , center=['50%', '60%']  # 饼图的中心（圆心）坐标，饼图放在页面的哪个位置，数组的第一项是横坐标，第二项是纵坐标，百分比表示相对位置
                  )
-            .set_global_opts(title_opts=opts.TitleOpts(title=' 中国  \n 确诊病例最少的十个城市'  # 大标题，\n表示换行符
+            .set_global_opts(title_opts=opts.TitleOpts(title='    中国  \n 确诊病例最少 \n 的十个城市'  # 大标题，\n表示换行符
 
                                                        , title_textstyle_opts=opts.TextStyleOpts(color='black'
                                                                                                  , font_size=20

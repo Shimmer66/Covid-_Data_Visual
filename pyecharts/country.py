@@ -9,7 +9,8 @@ import pyecharts.options as opts
 from pyecharts.commons.utils import JsCode
 
 
-def bmap3d() -> Map3D:
+def map3dChina() -> Map3D:
+#数据处理
     BarPlace1 = {}
     data = pd.read_csv('/code_workplace/Pycharm/Covid_data_visual/spider/data/newDayProvince.csv')
     confirm = list(data['confirmedCount'])
@@ -64,7 +65,6 @@ def bmap3d() -> Map3D:
     # print(BarPlace1)
     c = (
         Map3D()
-
             .add_schema(
             is_show_ground=True,
             shading='lambert',
@@ -97,7 +97,6 @@ def bmap3d() -> Map3D:
             data_pair=list(zip(list(BarPlace.keys()), list(BarPlace.values()))),
             type_=ChartType.BAR3D,
             bar_size=1,
-
             is_animation=True,
             animation_duration_update=1000,
             animation_easing_update="cubicOut",
@@ -116,7 +115,6 @@ def bmap3d() -> Map3D:
 
             label_opts=opts.LabelOpts(
                 is_show=True,
-
                 formatter=JsCode(
                     "function(data){return data.name + ' ' + data.value[2];}")))
             .set_global_opts(title_opts=opts.TitleOpts(title="全国疫情分布", subtitle=subtitle, pos_left="50", pos_top="5%",
@@ -130,7 +128,8 @@ def bmap3d() -> Map3D:
     return c
 
 
-def amap() -> Map:
+def mapChina() -> Map:
+    #数据处理
     data = pd.read_csv('/code_workplace/Pycharm/Covid_data_visual/spider/data/newDayProvince.csv')
     province = list(data["provinceName"])
     # province=Faker.provinces

@@ -1,7 +1,7 @@
-import csv
-from pyecharts import options as opts
 from pyecharts.charts import Geo
-from pyecharts.globals import ChartType, SymbolType
+from pyecharts.globals import ChartType
+
+
 def geoIn() -> Geo:
     province = []
     value = []
@@ -24,7 +24,7 @@ def geoIn() -> Geo:
         Geo()
             .add_schema(
             maptype="china",
-            itemstyle_opts=opts.ItemStyleOpts(color="#323c48", border_color="#111"),
+            itemstyle_opts=opts.ItemStyleOpts(color="#FFD700", border_color="#000"),
         )
             .add(
             "",
@@ -43,6 +43,39 @@ def geoIn() -> Geo:
         )
             .set_series_opts(label_opts=opts.LabelOpts(is_show=False))
             .set_global_opts(title_opts=opts.TitleOpts(title="湖北迁入人口流向图"))
+    )
+    return c
 
+
+import csv
+
+from pyecharts.globals import SymbolType
+
+from pyecharts import options as opts
+from pyecharts.charts import Bar
+
+def hubeiin() -> Bar:
+    province = []
+    value = []
+    with open('//code_workplace/Pycharm/Covid_data_visual/spider/data/in_hubei.csv', 'r', encoding='utf-8')as f:
+        reader = csv.reader(f)
+        for line in reader:
+            # print(line[0])
+            # print(line[1])
+            # print(line[2])
+            if line[0] == '20200110':
+                province.append(line[1])
+                value.append((line[2]))
+
+    c = (
+        Bar()
+            .add_xaxis(province)
+
+            .add_yaxis("迁入率", value)
+            .set_global_opts(
+            title_opts=opts.TitleOpts(title="湖北迁出"),
+            toolbox_opts=opts.ToolboxOpts(),
+            legend_opts=opts.LegendOpts(is_show=False),
+        )
     )
     return c

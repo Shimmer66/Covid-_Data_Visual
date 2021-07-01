@@ -1,12 +1,8 @@
-import requests
-import json
-from bs4 import BeautifulSoup
-import re
-import datetime
-import os
-import time
-import pymysql
 import csv
+import json
+import re
+import requests
+from bs4 import BeautifulSoup
 # 数据库连接
 # db = ''
 # cursor = ''
@@ -22,13 +18,7 @@ import csv
 # db = pymysql.connect(**config)
 # cursor = db.cursor()
 # while True:
-
-
-
-
 # 国家名
-
-
 nameMap = {
     'France': '法国',
     'Singapore Rep.': '新加坡',
@@ -222,32 +212,16 @@ nameMap = {
     'Sudan': '苏丹',
     'Greenland': '格陵兰岛',
     'Bangladesh': '孟加拉'
-}
-#
-# # 使用zip压缩为元组形式
-# qz_data = [tuple(z) for z in zip(National_data, num_data)]
-# zy_data = [tuple(z) for z in zip(National_data, num_data_zy)]
-# sr_data = [tuple(z) for z in zip(National_data, day_data)]
-#
-# data_sum = 0
-# data_zy = 0
-# for i in range(len(num_data)):
-#     data_sum += num_data[i]
-#     data_zy += num_data_zy[i]
-
+}  #国家英文名称映射
 url = 'https://ncov.dxy.cn/ncovh5/view/pneumonia'
-
 headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'}
-
-
 def save_data(table):
     with open('data/country.csv', 'w', newline='', encoding='utf-8') as fp:
         writer = csv.writer(fp)
         writer.writerow(table[1].keys())
         for line in table:
             writer.writerow(line.values())
-
 def get_data():
     r = requests.get(url, headers=headers)
     # print(r.status_code)
@@ -281,20 +255,11 @@ def get_data():
     print(table)
     for a in range(len(table)):
         for b in nameMap.keys():
-            # print(b)
-            # print(type(b))
-            # print(b['province'])
-            # print(nameMap[a].keys())
-            if nameMap[b]==table[a]['province']:
-                table[a]['province'] =b
-                # print(table[a]['province'])
+            if nameMap[b] == table[a]['province']:
+                table[a]['province'] = b
             else:
                 continue
-
-            # print(data)
-    # print(table)
     save_data(table)
-    # return table
 
 if __name__ == '__main__':
     get_data()

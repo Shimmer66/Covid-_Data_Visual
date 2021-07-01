@@ -5,15 +5,14 @@
     <title>Awesome-pyecharts</title>
             <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
         <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/ningxia.js"></script>
-        <script type="text/javascript" src="https://assets.pyecharts.org/assets/themes/vintage.js"></script>
 
 </head>
 <body>
-    <div id="9ac0177836994111891268decb048f72" class="chart-container" style="width:1500px; height:800px;"></div>
+    <div id="63dd1690a74e418aa8d9c5f77015f2fe" class="chart-container" style="width:900px; height:500px;"></div>
     <script>
-        var chart_9ac0177836994111891268decb048f72 = echarts.init(
-            document.getElementById('9ac0177836994111891268decb048f72'), 'vintage', {renderer: 'canvas'});
-        var option_9ac0177836994111891268decb048f72 = {
+        var chart_63dd1690a74e418aa8d9c5f77015f2fe = echarts.init(
+            document.getElementById('63dd1690a74e418aa8d9c5f77015f2fe'), 'white', {renderer: 'canvas'});
+        var option_63dd1690a74e418aa8d9c5f77015f2fe = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -22,6 +21,32 @@
     "animationDurationUpdate": 300,
     "animationEasingUpdate": "cubicOut",
     "animationDelayUpdate": 0,
+    "color": [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
+    ],
     "series": [
         {
             "type": "map",
@@ -79,23 +104,23 @@
             "data": [
                 {
                     "name": "\u94f6\u5ddd\u5e02",
-                    "value": 36
-                },
-                {
-                    "name": "\u5434\u5fe0\u5e02",
-                    "value": 28
-                },
-                {
-                    "name": "\u56fa\u539f\u5e02",
-                    "value": 5
-                },
-                {
-                    "name": "\u4e2d\u536b\u5e02",
                     "value": 4
                 },
                 {
+                    "name": "\u5434\u5fe0\u5e02",
+                    "value": 4
+                },
+                {
+                    "name": "\u56fa\u539f\u5e02",
+                    "value": 3
+                },
+                {
+                    "name": "\u4e2d\u536b\u5e02",
+                    "value": 3
+                },
+                {
                     "name": "\u5b81\u4e1c\u5e02",
-                    "value": 1
+                    "value": 2
                 },
                 {
                     "name": "\u77f3\u5634\u5c71\u5e02",
@@ -194,16 +219,16 @@
     },
     "title": [
         {
-            "text": "\u5b81\u590f\u5730\u56fe",
+            "text": "\u5b81\u590f\u75ab\u60c5\u5730\u56fe",
             "padding": 5,
             "itemGap": 10
         }
     ],
     "visualMap": {
         "show": true,
-        "type": "piecewise",
-        "min": 1,
-        "max": 17,
+        "type": "continuous",
+        "min": 0,
+        "max": 100,
         "inRange": {
             "color": [
                 "#50a3ba",
@@ -217,11 +242,11 @@
         "orient": "vertical",
         "showLabel": true,
         "itemWidth": 20,
-        "itemHeight": 14,
+        "itemHeight": 140,
         "borderWidth": 0
     }
 };
-        chart_9ac0177836994111891268decb048f72.setOption(option_9ac0177836994111891268decb048f72);
+        chart_63dd1690a74e418aa8d9c5f77015f2fe.setOption(option_63dd1690a74e418aa8d9c5f77015f2fe);
     </script>
 </body>
 </html>

@@ -10,18 +10,20 @@ import csv
 from pyecharts import options as opts
 from pyecharts.charts import Geo
 from pyecharts.globals import ChartType, SymbolType
-from in_hubei import geoIn
-from out_hubei import geoOut
+from in_hubei import geoIn,hubeiin
+from out_hubei import geoOut,hubeiout
 def page_simple_layout():
-    page = Page(layout=Page.SimplePageLayout)
+    page = Page(layout=Page.DraggablePageLayout)
     page.add(
         geoIn(),
-        geoOut()
+        geoOut(),
+        hubeiin(),
+        hubeiout(),
     )
-    page.render('migration.html')
-    # Page.save_resize_html('test.html',
-    #                       cfg_file="/code_workplace/Pycharm/Covid_data_visual/static/chart_config_all.json",
-    #                       dest="migration.html")
+    # page.render('migration.html')
+    Page.save_resize_html('migration.html',
+                          cfg_file="/code_workplace/Pycharm/Covid_data_visual/static/chart_config_migrate.json",
+                          dest="migration.html")
 
 
 if __name__ == "__main__":

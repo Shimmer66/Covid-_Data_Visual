@@ -18,7 +18,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 DATABASES_NAME = 'Covid'  # 数据库名称
 DATABASES_USER = 'root'  # 数据库用户名，按实际情况填写你的
-DATABASES_PASSWORD = ''  # 数据库密码，按实际情况填写你的
+DATABASES_PASSWORD = 'why..219'  # 数据库密码，按实际情况填写你的
 
 
 DATABASES = {

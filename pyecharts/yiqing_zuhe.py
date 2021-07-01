@@ -10,13 +10,13 @@ from pyecharts.commons.utils import JsCode
 from confirmAdd import lin
 from weibo_content import wordyun,pie,emotion
 from world import world
-from country import amap,bmap3d
+from country import mapChina,map3dChina
 
 def page_simple_layout():
     page = Page(layout=Page.DraggablePageLayout)
     page.add(
-        amap(),
-        bmap3d(),
+        mapChina(),
+        map3dChina(),
         world(),
         lin(),
         pie(),

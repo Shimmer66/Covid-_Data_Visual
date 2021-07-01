@@ -5,15 +5,14 @@
     <title>Awesome-pyecharts</title>
             <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
         <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/shanghai.js"></script>
-        <script type="text/javascript" src="https://assets.pyecharts.org/assets/themes/vintage.js"></script>
 
 </head>
 <body>
-    <div id="bcaecb3d345e40acb47bd65202f7bbd7" class="chart-container" style="width:1500px; height:800px;"></div>
+    <div id="81364d68f3794048a1886d75dc442f09" class="chart-container" style="width:900px; height:500px;"></div>
     <script>
-        var chart_bcaecb3d345e40acb47bd65202f7bbd7 = echarts.init(
-            document.getElementById('bcaecb3d345e40acb47bd65202f7bbd7'), 'vintage', {renderer: 'canvas'});
-        var option_bcaecb3d345e40acb47bd65202f7bbd7 = {
+        var chart_81364d68f3794048a1886d75dc442f09 = echarts.init(
+            document.getElementById('81364d68f3794048a1886d75dc442f09'), 'white', {renderer: 'canvas'});
+        var option_81364d68f3794048a1886d75dc442f09 = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -22,6 +21,32 @@
     "animationDurationUpdate": 300,
     "animationEasingUpdate": "cubicOut",
     "animationDelayUpdate": 0,
+    "color": [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
+    ],
     "series": [
         {
             "type": "map",
@@ -96,10 +121,6 @@
                 {
                     "name": "\u5d07\u660e\u533a",
                     "value": 4
-                },
-                {
-                    "name": "\u5883\u5916\u6765\u6caa\u5e02",
-                    "value": 1
                 }
             ],
             "roam": true,
@@ -123,71 +144,67 @@
             "data": [
                 {
                     "name": "\u6d66\u4e1c\u65b0\u533a",
-                    "value": 68
+                    "value": 2196
                 },
                 {
                     "name": "\u5b9d\u5c71\u533a",
-                    "value": 25
+                    "value": 1767
                 },
                 {
                     "name": "\u9ec4\u6d66\u533a",
-                    "value": 22
+                    "value": 112
                 },
                 {
                     "name": "\u95f5\u884c\u533a",
-                    "value": 19
+                    "value": 68
                 },
                 {
                     "name": "\u5f90\u6c47\u533a",
-                    "value": 17
+                    "value": 25
                 },
                 {
                     "name": "\u9759\u5b89\u533a",
-                    "value": 15
+                    "value": 22
                 },
                 {
                     "name": "\u677e\u6c5f\u533a",
-                    "value": 14
+                    "value": 19
                 },
                 {
                     "name": "\u957f\u5b81\u533a",
-                    "value": 14
+                    "value": 17
                 },
                 {
                     "name": "\u666e\u9640\u533a",
-                    "value": 11
+                    "value": 15
                 },
                 {
                     "name": "\u6768\u6d66\u533a",
-                    "value": 9
+                    "value": 14
                 },
                 {
                     "name": "\u5609\u5b9a\u533a",
-                    "value": 7
+                    "value": 14
                 },
                 {
                     "name": "\u5949\u8d24\u533a",
-                    "value": 9
+                    "value": 11
                 },
                 {
                     "name": "\u8679\u53e3\u533a",
-                    "value": 7
+                    "value": 9
                 },
                 {
                     "name": "\u9752\u6d66\u533a",
-                    "value": 6
+                    "value": 7
                 },
                 {
                     "name": "\u91d1\u5c71\u533a",
-                    "value": 4
+                    "value": 9
                 },
                 {
                     "name": "\u5d07\u660e\u533a",
-                    "value": 4
-                },
-                {
-                    "name": "\u5883\u5916\u6765\u6caa\u5e02",
-                    "value": 1
+                    "value": 7
                 }
             ],
             "roam": true,
@@ -272,10 +289,6 @@
                 {
                     "name": "\u5d07\u660e\u533a",
                     "value": 0
-                },
-                {
-                    "name": "\u5883\u5916\u6765\u6caa\u5e02",
-                    "value": 0
                 }
             ],
             "roam": true,
@@ -326,16 +339,16 @@
     },
     "title": [
         {
-            "text": "\u4e0a\u6d77\u5730\u56fe",
+            "text": "\u4e0a\u6d77\u75ab\u60c5\u5730\u56fe",
             "padding": 5,
             "itemGap": 10
         }
     ],
     "visualMap": {
         "show": true,
-        "type": "piecewise",
-        "min": 1,
-        "max": 17,
+        "type": "continuous",
+        "min": 0,
+        "max": 100,
         "inRange": {
             "color": [
                 "#50a3ba",
@@ -349,11 +362,11 @@
         "orient": "vertical",
         "showLabel": true,
         "itemWidth": 20,
-        "itemHeight": 14,
+        "itemHeight": 140,
         "borderWidth": 0
     }
 };
-        chart_bcaecb3d345e40acb47bd65202f7bbd7.setOption(option_bcaecb3d345e40acb47bd65202f7bbd7);
+        chart_81364d68f3794048a1886d75dc442f09.setOption(option_81364d68f3794048a1886d75dc442f09);
     </script>
 </body>
 </html>

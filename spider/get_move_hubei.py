@@ -2,7 +2,6 @@ import csv
 import json
 
 import requests
-
 headers = {
     "Accept": "*/*",
     "Accept-Language": "zh-CN,zh;q=0.9",
@@ -16,8 +15,7 @@ headers = {
     "Sec-Fetch-Site": "same-site",
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36",
 }
-
-
+#获取json数据
 def get_date():
     url = 'https://huiyan.baidu.com/migration/historycurve.jsonp?dt=province&id=420000&startDate=20200110&endDate=20200315&type=move_in&callback=jsonp_1624497805942_5605632'
     r = requests.get(url=url, headers=headers).text
@@ -30,7 +28,7 @@ def get_date():
     # print(date_list)
     return date_list
 
-
+#流向湖北人口
 def move_in(date):
     url = 'https://huiyan.baidu.com/migration/provincerank.jsonp?dt=province&id=420000&type=move_in&date={}&callback=jsonp_1624497580218_6515979'.format(
         date)
@@ -43,8 +41,7 @@ def move_in(date):
             province_name = data['province_name']
             value = data['value']
             writer.writerow([date, province_name, value])
-
-
+#流出湖北人口
 def move_out(date):
     url = 'https://huiyan.baidu.com/migration/provincerank.jsonp?dt=province&id=420000&type=move_out&date={}&callback=jsonp_1624498896026_5147408'.format(
         date)
@@ -57,21 +54,16 @@ def move_out(date):
             province_name = data['province_name']
             value = data['value']
             writer.writerow([date, province_name, value])
-
-
 def main():
     with open('data/in_hubei.csv', 'w', encoding='utf-8', newline='')as f:
         writer = csv.writer(f)
-        writer.writerow(['date', 'province', 'value'])
+        writer.writerow(['date','province','rate'])
     with open('data/out_hubei.csv', 'w', encoding='utf-8', newline='')as f:
         writer = csv.writer(f)
-        writer.writerow(['date', 'province', 'value'])
+        writer.writerow(['date','province','rate'])
     date_list = get_date()
     for date in date_list:
-        print('==================={}======================'.format(date))
         move_in(date)
         move_out(date)
-
-
 if __name__ == '__main__':
     main()

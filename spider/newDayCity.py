@@ -1,12 +1,8 @@
-import requests
-import json
-from bs4 import BeautifulSoup
-import re
-import datetime
-import os
-import time
-import pymysql
 import csv
+import json
+import re
+import requests
+from bs4 import BeautifulSoup
 # 数据库连接
 # db = ''
 # cursor = ''
@@ -22,12 +18,10 @@ import csv
 # db = pymysql.connect(**config)
 # cursor = db.cursor()
 # while True:
-
 url = 'https://ncov.dxy.cn/ncovh5/view/pneumonia'
 save_path = ['spider/data/covid_city.csv', 'spider/data/covid_virus_trip.csv', 'spider/data/covid_rumor.csv']
 headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'}
-
 
 def save_data(table):
     with open('data/allDayCity.csv', 'w', newline='', encoding='utf-8') as fp:
@@ -45,41 +39,40 @@ def get_data():
     RE = re.compile('\[.*\]')
     data_clear = re.findall(RE, get_data2)
     data_json = json.loads(data_clear[0])  # 读取json数据
-    Number_of_China_provinces = len(data_json)  # 查看有几个省市，用于遍历。由常识可知，中华人民共和国有34个省级行政区域，包括23个省，5个自治区，4个直辖市，2个特别行政区。
+    Number_of_China_provinces = len(data_json)  # 查看有几个省市，用于遍历。
     # print(data_json)
-    keys = ['province', 'city','confirmedCount', 'deadCount', 'curedCount']
+    keys = ['province', 'city', 'confirmedCount', 'deadCount', 'curedCount']
     table = []
     for provinces in range(Number_of_China_provinces):
         provinceName = data_json[provinces]['provinceShortName']
         # print(''',provinceName,"'",end=',')
-        cityName=data_json[provinces]['provinceShortName']
+        cityName = data_json[provinces]['provinceShortName']
         totalConfirmedCount = data_json[provinces]['confirmedCount']
         totalDeadCount = data_json[provinces]['deadCount']
         totalCuredCount = data_json[provinces]['curedCount']
         values = []
-        values.extend([provinceName,cityName, totalCuredCount, totalDeadCount, totalConfirmedCount])
+        values.extend([provinceName, cityName, totalCuredCount, totalDeadCount, totalConfirmedCount])
         data = {}
 
         data = dict(zip(keys, values))
         table.append(data)
         for line in data_json[provinces]['cities']:
             # print( provinceName ,line)
-            cityName=line['cityName']
+            cityName = line['cityName']
             if cityName.endswith('盟') or cityName.endswith('区') or cityName.endswith('师'):
                 print(cityName)
-            else: cityName=cityName+'市'
+            else:
+                cityName = cityName + '市'
             # print(cityName)
 
             # print(values)
 
-
-
             # print(type(cityName))
-            confirmedCount=line['confirmedCount']
+            confirmedCount = line['confirmedCount']
             deadCount = line['deadCount']
             curedCount = line['curedCount']
             values = []
-            values.extend([provinceName,cityName, confirmedCount, deadCount, curedCount])
+            values.extend([provinceName, cityName, confirmedCount, deadCount, curedCount])
             data = {}
             print(values)
             data = dict(zip(keys, values))
