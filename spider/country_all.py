@@ -1,22 +1,24 @@
 import csv
 import json
 import re
+
+import pymysql
 import requests
 from bs4 import BeautifulSoup
 # 数据库连接
-# db = ''
-# cursor = ''
-#
-# config = {
-#     'host': '127.0.0.1'
-#     , 'user': 'root'
-#     , 'password': 'why..219'
-#     , 'database': 'test'
-#     , 'charset': 'utf8'
-#     , 'port': 3306  # 注意端口为int 而不是str
-# }
-# db = pymysql.connect(**config)
-# cursor = db.cursor()
+db = ''
+cursor = ''
+
+config = {
+    'host': '127.0.0.1'
+    , 'user': 'root'
+    , 'password': 'why..219'
+    , 'database': 'Covid'
+    , 'charset': 'utf8'
+    , 'port': 3306  # 注意端口为int 而不是str
+}
+db = pymysql.connect(**config)
+cursor = db.cursor()
 # while True:
 # 国家名
 nameMap = {
@@ -216,6 +218,24 @@ nameMap = {
 url = 'https://ncov.dxy.cn/ncovh5/view/pneumonia'
 headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'}
+def save_db(table):
+    sql = 'truncate table nowcountry'
+    cursor.execute(sql)
+    db.commit()
+
+    for data in table:
+        tablename = 'nowcountry'
+        # 获取到一个以键且为逗号分隔的字符串，返回一个字符串
+        keys = ','.join(data.keys())
+        values = ','.join(['%s'] * len(data))
+        sql = 'INSERT INTO {table}({keys}) VALUES({values})'.format(table=tablename, keys=keys, values=values)
+        # 这里的第二个参数传入的要是一个元组
+        if cursor.execute(sql, tuple(data.values())):
+            print('users')
+            db.commit()
+
+
+
 def save_data(table):
     with open('data/country.csv', 'w', newline='', encoding='utf-8') as fp:
         writer = csv.writer(fp)
@@ -259,7 +279,7 @@ def get_data():
                 table[a]['province'] = b
             else:
                 continue
-    save_data(table)
+    save_db(table)
 
 if __name__ == '__main__':
     get_data()

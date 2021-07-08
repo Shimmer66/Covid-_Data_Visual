@@ -1,6 +1,8 @@
 import csv
 import json
 import re
+
+import pymysql
 import requests
 from bs4 import BeautifulSoup
 # 数据库连接
@@ -18,18 +20,45 @@ from bs4 import BeautifulSoup
 # db = pymysql.connect(**config)
 # cursor = db.cursor()
 # while True:
+db = ''
+cursor = ''
+
+config = {
+    'host': '127.0.0.1'
+    , 'user': 'root'
+    , 'password': 'why..219'
+    , 'database': 'Covid'
+    , 'charset': 'utf8'
+    , 'port': 3306  # 注意端口为int 而不是str
+}
+db = pymysql.connect(**config)
+cursor = db.cursor()
 url = 'https://ncov.dxy.cn/ncovh5/view/pneumonia'
 save_path = ['spider/data/covid_city.csv', 'spider/data/covid_virus_trip.csv', 'spider/data/covid_rumor.csv']
 headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'}
 
-def save_data(table):
+def save_csv(table):
     with open('data/allDayCity.csv', 'w', newline='', encoding='utf-8') as fp:
         writer = csv.writer(fp)
         writer.writerow(table[1].keys())
         for line in table:
             writer.writerow(line.values())
+def save_db(table):
+    # # sql = 'truncate table nowcity'
+    # cursor.execute(sql)
+    # db.commit()
 
+    for data in table:
+        tablename = 'nowcity'
+        # 获取到一个以键且为逗号分隔的字符串，返回一个字符串
+        keys = ','.join(data.keys())
+        values = ','.join(['%s'] * len(data))
+        sql = 'INSERT INTO {table}({keys}) VALUES({values})'.format(table=tablename, keys=keys, values=values)
+        # 这里的第二个参数传入的要是一个元组
+        if cursor.execute(sql, tuple(data.values())):
+            print('users')
+            db.commit()
 def get_data():
     r = requests.get(url, headers=headers)
     r.encoding = r.apparent_encoding
@@ -78,8 +107,8 @@ def get_data():
             data = dict(zip(keys, values))
             table.append(data)
             # print(data)
-    # print(table)
-    save_data(table)
+    print(table)
+    save_db(table)
     # return table
 
 if __name__ == '__main__':

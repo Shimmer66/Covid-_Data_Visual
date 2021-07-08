@@ -39,8 +39,8 @@ def move_in(date):
         writer = csv.writer(f)
         for data in data_list:
             province_name = data['province_name']
-            value = data['value']
-            writer.writerow([date, province_name, value])
+            invalue = data['value']
+            writer.writerow([date, province_name, invalue])
 #流出湖北人口
 def move_out(date):
     url = 'https://huiyan.baidu.com/migration/provincerank.jsonp?dt=province&id=420000&type=move_out&date={}&callback=jsonp_1624498896026_5147408'.format(
