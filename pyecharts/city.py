@@ -1,26 +1,20 @@
-import os
-import pyecharts.options as opts
-import pandas as pd
-from pyecharts.charts import Map
-import os
-import pandas as pd
-import pyecharts.options as opts
-from pyecharts.charts import Map
+#生成各个省份地图
 
+
+
+import os
+import pandas as pd
+import pyecharts.options as opts
+from pyecharts.charts import Map
 os.chdir('//code_workplace/Pycharm/Covid_data_visual/templates')
 data = pd.read_csv('/code_workplace/Pycharm/Covid_data_visual/spider/data/allDayCity.csv')
 data1 = pd.DataFrame(data[~data.city.str.contains('境外|外地|省级|兵团|待明确')])
 #
 data1.reset_index(drop=True, inplace=True)
 pd.set_option('display.max_rows', None)
-# print(data)
-# print(data1)
-# for j in range(len(data1)):
-# print(data1['city'])
+
 province = list(pd.read_csv('/code_workplace/Pycharm/Covid_data_visual/spider/data/newDayProvince.csv')['provinceName'])
-# print(province)
-# print(data['city'].isin(['境外', '外地', '省级', '兵团']))
-# city,confirmedCount,deadCount,curedCount
+
 for i in province:
     confirm = []
     dead = []

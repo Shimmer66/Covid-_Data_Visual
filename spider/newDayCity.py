@@ -1,37 +1,12 @@
 import csv
 import json
 import re
-
 import pymysql
 import requests
-from bs4 import BeautifulSoup
 # 数据库连接
-# db = ''
-# cursor = ''
-#
-# config = {
-#     'host': '127.0.0.1'
-#     , 'user': 'root'
-#     , 'password': 'why..219'
-#     , 'database': 'test'
-#     , 'charset': 'utf8'
-#     , 'port': 3306  # 注意端口为int 而不是str
-# }
-# db = pymysql.connect(**config)
-# cursor = db.cursor()
-# while True:
-db = ''
-cursor = ''
-
-config = {
-    'host': '127.0.0.1'
-    , 'user': 'root'
-    , 'password': 'why..219'
-    , 'database': 'Covid'
-    , 'charset': 'utf8'
-    , 'port': 3306  # 注意端口为int 而不是str
-}
-db = pymysql.connect(**config)
+import db
+from bs4 import BeautifulSoup
+db = pymysql.connect(**db.config)
 cursor = db.cursor()
 url = 'https://ncov.dxy.cn/ncovh5/view/pneumonia'
 save_path = ['spider/data/covid_city.csv', 'spider/data/covid_virus_trip.csv', 'spider/data/covid_rumor.csv']

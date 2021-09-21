@@ -4,15 +4,9 @@ from urllib.parse import quote
 
 import pymysql
 import requests
-config = {
-    'host': '127.0.0.1'
-    , 'user': 'root'
-    , 'password': 'why..219'
-    , 'database': 'Covid'
-    , 'charset': 'utf8'
-    , 'port': 3306  # 注意端口为int 而不是str
-}
-db = pymysql.connect(**config)
+import db
+# 数据库连接
+db = pymysql.connect(**db.config)
 cursor = db.cursor()
 def get_province():
     url = 'https://api.inews.qq.com/newsqa/v1/query/inner/publish/modules/list?modules=chinaDayList,chinaDayAddList,nowConfirmStatis,provinceCompare'

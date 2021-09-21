@@ -1,22 +1,12 @@
 import requests
 import json
-from bs4 import BeautifulSoup
 import re
-import datetime
-import os
-import time
 import pymysql
 import csv
+import db
+from bs4 import BeautifulSoup
 # 数据库连接
-config = {
-    'host': '127.0.0.1'
-    , 'user': 'root'
-        , 'password': 'why..219'
-    , 'database': 'Covid'
-    , 'charset': 'utf8'
-    , 'port': 3306  # 注意端口为int 而不是str
-}
-db = pymysql.connect(**config)
+db = pymysql.connect(**db.config)
 cursor = db.cursor()
 # while True:
 
